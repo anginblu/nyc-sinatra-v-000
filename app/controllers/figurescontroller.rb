@@ -52,10 +52,11 @@ class FiguresController < ApplicationController
   post '/figures/:id/edit' do
     @figure = Figure.find_by_slug(params[:slug])
 
-    @figure.titles = []
-    params[:figure][:title_ids].each do |id|
-      @title = Title.find(id)
-      @figure.figure_titles.create(title: @title)
+    if !params[:figure][:title_ids].nil?
+      params[:figure][:title_ids].each do |id|
+        @title = Title.find(id)
+        @figure.figure_titles.create(title: @title)
+      end
     end
     if !params["new_title"].empty?
       # @title = Title.create(name: params["new_title"])

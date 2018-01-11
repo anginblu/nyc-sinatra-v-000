@@ -1,6 +1,6 @@
 <h2>List of Landmarks</h2>
 
   <%@landmarks.each do |i|%>
-    Landmark Name: <%=i.name%><br>
-    Figure Name: <%=i.figure.name%><br>
+    Landmark Name: <a href="/landmarks/<%=i.id%>"><%=i.name%></a><br>
+    Year Completed: <%=i.year_completed%><br><br>
   <%end%>
