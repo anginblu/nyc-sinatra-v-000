@@ -1,0 +1,23 @@
+<h2>List of Figures</h2>
+
+  <%@figures.each do |i|%>
+    Name: <%=i.name%><br>
+    <%unless !i.landmarks.nil?%>
+      Related landmarks:
+        <%i.landmarks.each do |ii|%>
+        <li>
+          <%=ii.name%>
+        <%end%>
+        </li><br>
+    <%end%>
+
+    <%unless !i.titles.nil?%>
+      Related titles:
+        <%i.titles.each do |iii|%>
+        <li>
+          <%=iii.name%>
+        <%end%>
+        </li><br>
+    <%end%><br>
+
+  <%end%><br>
