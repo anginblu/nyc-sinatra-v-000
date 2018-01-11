@@ -39,17 +39,17 @@ class FiguresController < ApplicationController
     redirect to "/figures/#{@figure.slug}"
   end
 
-  get '/figures/:slug' do
-    @figure = Figure.find_by_slug(params[:slug])
+  get '/figures/:id' do
+    @figure = Figure.find(params[:id])
     erb :'/figures/show'
   end
 
-  get '/figures/:slug/edit' do
-    @figure = Figure.find_by_slug(params[:slug])
+  get '/figures/:id/edit' do
+    @figure = Figure.find(params[:id])
     erb :'/figures/edit'
   end
 
-  post '/figures/:slug/edit' do
+  post '/figures/:id/edit' do
     @figure = Figure.find_by_slug(params[:slug])
 
     @figure.titles = []
@@ -76,6 +76,6 @@ class FiguresController < ApplicationController
       @figure.save
     end
 
-    redirect to "/figures/#{@figure.slug}"
+    redirect to "/figures/#{@figure.id}"
   end
 end

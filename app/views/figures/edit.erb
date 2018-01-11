@@ -1,8 +1,8 @@
-<h2>Edit Figure!</h2>
+<h2>Edit Figure <%=@figure.name%>!</h2>
 
 <form action="/figures/<%=@figure.slug%>/edit" method="post">
 
-  Name: <input type="text" name="figure_name" id="figure[name]"><br><br>
+  Name: <input type="text" name="figure_name" id="figure[name]" value="New Name"><br><br>
 
   Title(s): <input type="text" name="new_title" id="title[name]"><br>
   Or choose from existing titles:<br>
