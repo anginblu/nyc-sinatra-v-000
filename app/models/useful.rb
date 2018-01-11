@@ -6,8 +6,8 @@ module Useful
   end
 
   module ClassMethods
-    def find_by_slug(slug)
-      self.all.bsearch {|hey| hey.slug == slug}
+    def find_by_slug(object)
+      self.all.find {|item| item.slug == object}
     end
   end
 

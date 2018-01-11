@@ -15,13 +15,14 @@ class FiguresController < ApplicationController
   end
 
   post '/figures' do
-    binding.pry
     @figure = Figure.create(params[:figure][:name])
     if params[:title][:name].empty?
       @figure.figure_titles.create(params[:figure][:title_ids])
     else
       @figure.figure_titles.create(params[:title][:name])
     end
-    erb :'/figures/show'
+    @figure.save
   end
+
+
 end
