@@ -10,6 +10,7 @@ class FiguresController < ApplicationController
   end
 
   post '/figures/new' do
+    binding.pry
 
     @figure = Figure.create(name: params["figure_name"])
 
@@ -28,12 +29,13 @@ class FiguresController < ApplicationController
       params[:figure][:landmark_ids].each do |id|
         @landmark = Landmark.find(id)
         @figure.landmarks << @landmark
+        @figure.save
       end
     else
       @landmark = Landmark.create(name: params["new_landmark"])
       @figure.landmarks << @landmark
+      @figure.save
     end
-    @figure.save
 
     redirect to "/figures/#{@figure.slug}"
   end
@@ -43,4 +45,14 @@ class FiguresController < ApplicationController
     erb :'/figures/show'
   end
 
+  get '/figures/:slug/edit' do
+    @figure = Figure.find_by_slug(params[:slug])
+    erb :'/figures/edit'
+  end
+
+  post '/figures/:slug/edit' do
+    @figure = Figure.find_by_slug(params[:slug])
+
+    redirect to "/figures/#{@figure.slug}"
+  end
 end
