@@ -1,11 +1,11 @@
 <h2>Edit Landmark <%=@landmark.name%>!</h2>
 
-<form action="/figures/<%=@landmark.id%>/edit" method="post">
+<form action="/landmarks/<%=@landmark.id%>" method="post">
 
-  New Name: <input type="text" name="landmark_name" id="landmark[name]"><br><br>
+  New Name: <input type="text" name="landmark[name]" id="name"><br><br>
 
   Existing Year Completed: <%=@landmark.year_completed.to_s%><br>
-  New Year Completed: <input type="text" name="landmark_year_completed" id="landmark[year_completed]"><br><br>
+  New Year Completed: <input type="text" name="landmark[year_completed]" id="year_completed"><br><br>
 
   <input type="submit" value="Edit Landmark">
 <br>

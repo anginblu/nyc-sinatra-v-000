@@ -24,8 +24,15 @@ class LandmarksController < ApplicationController
     erb :'/landmarks/edit'
   end
 
-  post '/landmarks/:id/edit' do
+  post '/landmarks/:id' do
     @landmark = Landmark.find(params[:id])
-    redirect to erb :"/landmarks/#{@landmark.id}"
+    binding.pry
+    if !params[:landmark][:name].empty?
+      @landmark.update(name: params[:landmark][:name])
+    end
+    if !params[:landmark][:year_completed].empty?
+      @landmark.update(name: params[:landmark][:year_completed])
+    end
+    # redirect to "/landmarks/#{@landmark.id}"
   end
 end
