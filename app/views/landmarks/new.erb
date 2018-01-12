@@ -1,23 +1,9 @@
-<h2>Create New Landmark <%=@landmark.name%>!</h2>
+<h2>Create New Landmark!</h2>
 
 <form action="/landmarks/new" method="post">
 
   Name: <input type="text" name="landmark[name]" id="landmark_name"><br><br>
   Year Completed: <input type="text" name="landmark[year_completed]" id="landmark_year_completed"><br><br>
 
-  <!-- Figure: <input type="text" name="new_title" id="title[name]"><br>
-  Or choose from existing titles:<br>
-    <% Title.all.each do |i| %>
-      <input type="checkbox" name="figure[title_ids][]" id="title_<%= i.id %>" value="<%=i.id%>"><%=i.name%></input><br>
-    <% end %><br>
-
-  Landmark(s): <input type="text" name="new_landmark" id="landmark[name]"><br>
-  Or choose from existing landmarks:<br>
-    <% Landmark.all.each do |ii| %>
-      <input type="checkbox" name="figure[landmark_ids][]" id="landmark_<%= ii.id %>" value="<%=ii.id%>"><%=ii.name%></input><br>
-    <% end %><br> -->
-
   <input type="submit" value="Create New Landmark">
-<br>
-
 </form>
