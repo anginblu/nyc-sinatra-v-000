@@ -2,14 +2,6 @@
 
   <%@figures.each do |i|%>
     Name: <a href="/figures/<%=i.id%>"><%=i.name%></a><br>
-    <%unless !i.landmarks.nil?%>
-      Related landmarks:
-        <%i.landmarks.each do |ii|%>
-        <li>
-          <a href="/landmarks/<%=ii.id%>"><%=ii.name%></a>
-        <%end%>
-        </li><br>
-    <%end%>
 
     <%unless !i.titles.nil?%>
       Related titles:
@@ -19,5 +11,14 @@
         <%end%>
         </li><br>
     <%end%><br>
+
+    <%unless !i.landmarks.nil?%>
+      Related landmarks:
+        <%i.landmarks.each do |ii|%>
+        <li>
+          <a href="/landmarks/<%=ii.id%>"><%=ii.name%></a>
+        <%end%>
+        </li><br>
+    <%end%>
 
   <%end%><br>

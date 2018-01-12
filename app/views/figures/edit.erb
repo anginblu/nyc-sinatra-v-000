@@ -2,9 +2,9 @@
 
 <form action="/figures/<%=@figure.id%>" method="post">
 
-  Name: <input type="text" name="figure_name" id="figure[name]" value="New Name"><br><br>
+  Name: <input type="text" name="figure[name]" id="figure_name" value="New Name"><br><br>
 
-  Title(s): <input type="text" name="new_title" id="title[name]"><br>
+  Title(s): <input type="text" name="title[name]" id="new_title"><br>
   Or choose from existing titles:<br>
     <% Title.all.each do |i| %>
       <input type="checkbox" name="figure[title_ids][]" id="title_<%= i.id %>" value="<%=i.id%>"><%=i.name%></input><br>
