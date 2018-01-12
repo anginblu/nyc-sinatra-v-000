@@ -36,7 +36,7 @@ class FiguresController < ApplicationController
     end
     @figure.save
 
-    redirect to "/figures/#{@figure.slug}"
+    redirect to "/figures/#{@figure.id}"
   end
 
   get '/figures/:id' do
@@ -49,8 +49,10 @@ class FiguresController < ApplicationController
     erb :'/figures/edit'
   end
 
-  post '/figures/:id/edit' do
-    @figure = Figure.find_by_slug(params[:slug])
+  post '/figures/:id' do
+    @figure = Figure.find(params[:id])
+    @figure.figure_titles.clear
+    @figure.landmarks.clear
 
     if !params[:figure][:title_ids].nil?
       params[:figure][:title_ids].each do |id|
@@ -62,21 +64,19 @@ class FiguresController < ApplicationController
       # @title = Title.create(name: params["new_title"])
       @figure.figure_titles.create(title: params["new_title"])
     end
-    @figure.save
 
-    if params["new_landmark"].empty?
-      @figure.landmarks = []
+    if !params[:figure][:landmark_ids].nil?
       params[:figure][:landmark_ids].each do |id|
         @landmark = Landmark.find(id)
-        @figure.landmarks << @landmark
-        @figure.save
+        @landmark.figure = @figure
       end
-    else
-      @landmark = Landmark.create(name: params["new_landmark"])
-      @figure.landmarks << @landmark
-      @figure.save
     end
-
+    if !params["new_landmark"].empty?
+      @landmark = Landmark.create(name: params["new_landmark"])
+      @landmark.figure = @figure
+    end
+    @landmark.save
+    @figure.save
     redirect to "/figures/#{@figure.id}"
   end
 end

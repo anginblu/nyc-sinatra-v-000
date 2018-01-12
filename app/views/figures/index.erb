@@ -1,12 +1,12 @@
 <h2>List of Figures</h2>
 
   <%@figures.each do |i|%>
-    Name: <a href="/figures/<%=i.slug%>"><%=i.name%></a><br>
+    Name: <a href="/figures/<%=i.id%>"><%=i.name%></a><br>
     <%unless !i.landmarks.nil?%>
       Related landmarks:
         <%i.landmarks.each do |ii|%>
         <li>
-          <a href="/landmarks/<%=ii.slug%>"><%=ii.name%></a>
+          <a href="/landmarks/<%=ii.id%>"><%=ii.name%></a>
         <%end%>
         </li><br>
     <%end%>
@@ -15,7 +15,7 @@
       Related titles:
         <%i.titles.each do |iii|%>
         <li>
-          <a href="/titles/<%=iii.slug%>"><%=iii.name%></a>
+          <%=iii.name%></a>
         <%end%>
         </li><br>
     <%end%><br>
